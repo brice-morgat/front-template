@@ -1,0 +1,147 @@
+.job-card {
+    border: 1px solid #e8e8e8;
+    padding: 20px 16px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 15px;
+    &-title {
+     font-weight: 600;
+     margin-top: 14px;
+     font-size: 20px;
+    }
+    &-subtitle {
+     color: #83838e;
+     font-size: 13px;
+     line-height: 1.6em;
+    }
+    &-header {
+     display: flex;
+     align-items: flex-start;
+    }
+    .headline
+    {
+      margin-bottom: 15px;
+      h3
+      {
+        font-weight: 700;
+      }
+    }
+   }
+
+   .card-buttons,
+   .card-buttons-msg {
+    padding: 10px;
+    width: 100%;
+    font-size: 12px;
+    cursor: pointer;
+   }
+
+   .menu-dot {
+    margin-left: auto;
+    margin-right: 8px;
+   }
+
+   .table
+   {
+       thead
+       {
+           tr
+           {
+               background-color: white;
+           }
+           th
+           {
+               border: none;
+               padding: 0px 10px;
+           }
+       }
+       tr
+       {
+           background-color: #F8F8FA;
+           border-radius: 10px;
+       }
+       td
+       {
+         border: none;
+       }
+   }
+
+   .overview-wrapper {
+       display: flex;
+       align-items: center;
+       svg:first-child {
+        width:70px;
+        margin-right: 10px;
+       }
+      }
+
+   .overview-detail {
+    .job-card-title,
+    .job-card-subtitle {
+     margin-top: 4px;
+    }
+    .job-card-subtitle {
+     font-size: 12px;
+     font-weight: 500;
+    }
+   }
+
+   table tr th:last-child {
+    width: 130px;
+  }
+
+     table td:first-child
+     {
+       border-radius: 10px 0 0 10px;
+     }
+     table td:last-child
+     {
+       border-radius: 0px 10px 10px 0px;
+     }
+     table {
+       border-collapse: separate;
+       border-spacing: 0 7px;
+
+       td {
+         height: 50px;
+         vertical-align: middle;
+         position: relative;
+       }
+      }
+
+.table
+{
+  margin-bottom: 0;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)
+{
+  --bs-table-accent-bg: unset;
+  color: unset;
+}
+
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0.5rem 1rem;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+::ng-deep .p-overlaypanel .p-overlaypanel-content{
+    padding: 0;
+}

@@ -1,0 +1,81 @@
+<div class="layout-topbar">
+    <a (click)="appMain.toggleMenu($event)" class="p-link layout-menu-button layout-topbar-button" href="#">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <a class="layout-topbar-logo" routerLink="">
+        <img alt="Prime Blocks" class="w-auto"
+             src="assets/images/icon.png"/>
+        <!-- <img src="../assets/layout/images/{{appMain.config.dark ? 'logo-white' : 'logo-dark'}}.svg" alt="logo"> -->
+        <!-- <span>Weproc</span> -->
+    </a>
+
+    <a (click)="appMain.toggleTopMenu($event)" class="p-link layout-topbar-menu-button layout-topbar-button" href="#">
+        <i class="pi pi-ellipsis-v"></i>
+    </a>
+
+    <div [ngClass]="{'layout-topbar-menu-mobile-active':appMain.topMenuActive}" class="layout-topbar-menu">
+        <!-- <a class="p-link layout-topbar-button" href="#">
+            <i class="pi pi-calendar"></i>
+            <span>Calendar</span>
+        </a>
+        <a class="p-link layout-topbar-button" href="#">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span> 
+        </a> -->
+
+        <button (click)="visibleSidebar2 = true"
+                class="p-link layout-topbar-button p-button-rounded p-button-text p-button-plain mr-2 mb-2 mr-2"
+                icon="pi pi-user" pButton pRipple
+                type="button">
+            <i class="pi pi-user"></i>
+        </button>
+    </div>
+</div>
+
+<p-sidebar [(visible)]="visibleSidebar2" [baseZIndex]="10000" [style]="{width:'35em'}" position="right">
+    <!-- <h3 style="font-weight:normal; text-align:center">{{user.name + " " + user.nickname}}</h3>
+        <div class="align-content-center">
+            <h3 class="text-center">Serveurs</h3>
+        </div>
+        <div class="card">
+            <div class="card-container flex-initial">
+                <div class="flex mb-2">
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round mr-3"
+                         [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-comment text-purple-500 text-xl"></i>
+                    </div>
+                    <div class="flex align-items-center">
+                        <span class="text-900 font-medium text-xl">Weproc</span>
+                    </div>
+                </div>
+                <div class="flex align-items-center">
+                    <p-inputSwitch [(ngModel)]="valSwitch"  class="mr-3" style="color: blue;"></p-inputSwitch>
+                    <label class="switch green flex align-items-center">{{" Connecté"}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container flex-initial">
+                <div class="flex mb-2">
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round mr-3"
+                         [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                        <i class="pi pi-comment text-purple-500 text-xl"></i>
+                    </div>
+                    <div class="flex align-items-center">
+                        <span class="text-900 font-medium text-xl">Acti</span>
+                    </div>
+                </div>
+                <div class="flex align-items-center">
+                    <p-inputSwitch [(ngModel)]="!valSwitch"  class="mr-3" style="color: blue;"></p-inputSwitch>
+                    <label class="switch green flex align-items-center">{{" Connecté"}}</label>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="card card-button">
+            <a icon="icon-material-outline-power-settings-new" style="alignment: center" href="javascript:void(0)"><i
+                aria-hidden="true" class="pi pi-sign-out mr-1"></i>Se déconnecter</a>
+        </div>
+</p-sidebar>
+

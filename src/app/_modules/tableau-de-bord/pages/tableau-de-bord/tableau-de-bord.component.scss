@@ -1,0 +1,19 @@
+.notif {
+    display: flex;
+    flex-wrap: wrap;
+    // text-align: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    justify-content: center;
+    @media (max-width: 1572px) {
+        display: block;
+        justify-items: center;
+        margin: 0;
+        justify-content: center;
+
+    }
+}

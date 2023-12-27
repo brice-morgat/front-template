@@ -1,0 +1,112 @@
+<div *ngIf="dataList$ | async as list" class="card">
+    <h4>Liste des patients</h4>
+
+    <p-dialog header="Ajouter un patient" [(visible)]="display" modal="modal" showEffect="fade"
+        [style]="{width: '30vw'}" [breakpoints]="{'960px': '75vw'}">
+        <form [formGroup]="sendForm">
+            <div class="card p-fluid">
+                <input formControlName="id" type="hidden">
+                <div class="field">
+                    <label htmlFor="family">Nom</label>
+                    <input formControlName="family" pInputText id="family" type="text" />
+                </div>
+                <div class="field">
+                    <label htmlFor="given">Prénom</label>
+                    <input formControlName="given" pInputText id="given" type="text" />
+                </div>
+                <div class="field">
+                    <label htmlFor="sex">Genre</label>
+                    <p-dropdown placeholder="Genre" formControlName="sex" [options]="options" [(ngModel)]="selectedOption" optionLabel="name" optionValue="code" pInputText id="sex" type="text"></p-dropdown>
+                </div>
+                <div class="field">
+                    <label htmlFor="dob">Date de naissance</label>
+                    <input type="date" formControlName="dob" [(ngModel)]="selectedDate" dateFormat="yy-mm-dd"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="address">Adresse</label>
+                    <input formControlName="address" pInputText id="address" type="text" />
+                </div>
+                <div class="field">
+                    <label htmlFor="phone">Numéro de téléphone</label>
+                    <input formControlName="phone" pInputText id="phone" type="text" />
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <button pButton icon="pi pi-times" (click)="display=false" label="Annuler"
+                class="p-button-rounded p-button-danger"></button>
+
+            <button [disabled]="!sendForm.valid" (click)="valid()" pButton icon="pi pi-check" (click)="display=false" label="Valider"
+                class="p-button-rounded p-button-success"></button>
+        </ng-template>
+    </p-dialog>
+    <div class="grid">
+        <div class="col-12">
+            <button (click)="add()" pButton icon="pi pi-plus" label="Ajouter" style="width:auto;"></button>
+        </div>
+    </div>
+    <p-table [value]="list" [paginator]="false" [rows]="10" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Sexe</th>
+                <th>Adresse</th>
+                <th>Téléphone</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-list>
+            <p-overlayPanel #op appendTo="body" [style]="{width: '150px'}">
+                <ng-template pTemplate>
+                    <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">Action</button>
+                        <button class="dropdown-item" type="button">Another action</button>
+                        <button class="dropdown-item" type="button">Something else here</button>
+                      </div> -->
+                    <ul class="dropdown__menu">
+                        <li (click)="view(list.id)"><a><i  aria-hidden="true" class="pi pi-eye margin-right-5"></i> Voir</a></li>
+                        <!-- <li class="dropdown-item"><a><i
+                          aria-hidden="true" class="pi pi-copy margin-right-5"></i> TEST</a></li>
+                    <li class="dropdown-item"><a><i
+                          aria-hidden="true" class="pi pi-ban margin-right-5"></i>ku</a></li> -->
+                        <li class="dropdown-item" (click)="edit(list)"><a style="color: orange;"><i aria-hidden="true"
+                                    class="pi pi-pencil margin-right-5"></i> Modifier</a></li>
+                        <li class="dropdown-item"><a style="color: red;"><i aria-hidden="true"
+                                    class="pi pi-trash margin-right-5"></i> Supprimer</a></li>
+                    </ul>
+                </ng-template>
+            </p-overlayPanel>
+            <tr>
+                <td style="width: 12.5%; min-width: 5rem;"> {{list.family}}</td>
+                <td style="width: 12.5%; min-width: 7rem;">{{list.given}}</td>
+                <td style="width: 12.5%; min-width: 8rem;">{{list.dob}}</td>
+                <ng-container *ngIf="list.sex == 'M'">
+                    <td style="width: 12.5%; min-width: 8rem;">Homme</td>
+                </ng-container>
+                <ng-container *ngIf="list.sex == 'F'">
+                    <td style="width: 12.5%; min-width: 8rem;">Femme</td>
+                </ng-container>
+                <ng-container *ngIf="list.sex != 'M' && list.sex != 'F'">
+                    <td style="width: 12.5%; min-width: 8rem;">Non défini</td>
+                </ng-container>
+                <td style="width: 12.5%; min-width: 8rem;">{{list.address}}</td>
+                <td style="width: 12.5%; min-width: 8rem;">{{list.phone}}</td>
+                <td style="width: 8%;">
+                    <button pButton pRipple type="button" icon="pi pi-eye" (click)="op.toggle($event)"
+                        class="p-button p-component p-button-text p-button-icon-only"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- <p-paginator
+    (onPageChange)="getServerData($event)"
+    [rows]="environments?.filter?.limit"
+    [totalRecords]="environments?.filter?.count"></p-paginator>
+
+    <mat-paginator [showFirstLastButtons]="true" [length]="environments?.filter?.count"
+    [pageSize]="environments?.filter?.limit" [pageIndex]="environments?.filter?.currentPage"
+    (page)="getServerData($event)"
+    [pageSizeOptions]="environments?.filter?.sizeOptions"></mat-paginator> -->
+</div>
